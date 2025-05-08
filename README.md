@@ -12,8 +12,8 @@ Este script depende das seguintes ferramentas:
 
 ## Uso
 
-```bash
 # Clone o repositório (ou entre no diretório onde está o script)
+  ```bash
 git clone https://github.com/seu-usuario/scanner-de-rede.git
 cd scanner-de-rede
 
