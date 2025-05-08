@@ -1,16 +1,24 @@
 # Scanner de Rede
 
-Um script Bash simples que realiza uma varredura em uma faixa de IP, identificando hosts ativos, seus hostnames e endereços MAC com fabricante.
+Este é um script Bash simples para realizar a varredura em uma faixa de IP, identificando hosts ativos na rede e coletando informações sobre o hostname e endereço MAC (com o fabricante). É útil para obter uma visão rápida dos dispositivos conectados à sua rede local.
 
 ## Pré-requisitos
 
 Este script depende das seguintes ferramentas:
 
-- `nmap`
-- `dig` (normalmente parte do pacote `dnsutils`)
-- `awk`, `grep`, `sed` (já vêm instalados por padrão em distribuições Linux)
+- `nmap` – Ferramenta de varredura de rede.
+- `dig` – Ferramenta para resolver nomes de domínio (DNS reverso).
+- `awk`, `grep`, `sed` – Ferramentas para processamento de texto (normalmente já instaladas em distribuições Linux).
 
 ## Uso
 
 ```bash
+# Clone o repositório (ou entre no diretório onde está o script)
+git clone https://github.com/seu-usuario/scanner-de-rede.git
+cd scanner-de-rede
+
+# Torne o script executável
+chmod +x scanner.sh
+
+# Execute o script como root
 sudo ./scanner.sh
