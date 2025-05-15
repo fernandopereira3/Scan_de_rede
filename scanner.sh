@@ -8,16 +8,36 @@ fi
 
 #Verifica se o programa nmap está instalado
 if [ -e "/bin/nmap" ] ;then
-# Realiza a varredura de descoberta de hosts
-nmap -sn "$REDE" -oG - | awk '/Up$/{print $2}' > ips_ativos.txt
+  # Solicita a faixa de IPs
+  read -p "Digite a faixa de IP (ex: 192.168.1.0/24): " REDE
+  # Realiza a varredura de descoberta de hosts
+  nmap -sn "$REDE" -oG - | awk '/Up$/{print $2}' > ips_ativos.txt
+# Desculpe por mas os IFs foram a unica forma que encontrei para instalar o nmap
 else
-    echo "O programa nmap não está instalado. Por favor, instale-o."
+  name=$(cat /etc/os-release | grep -w "NAME" | cut -d '"' -f2)
+  if [ "$name" == 'Fedora Linux' ]; then
+    dnf install nmap -y
+  fi
+  if [ "$name" == 'Ubuntu' ]; then
+    apt install nmap -y
+  fi
+  if [ "$name" == 'Linux Mint' ]; then
+    apt install nmap -y
+  fi
+  if [ "$name" == 'Debian GNU/Linux' ]; then
+    apt install nmap -y
+  fi
+  if [ "$name" == 'Pop!_OS' ]; then
+    apt install nmap -y
+  fi
+  if [ "$name" == 'Kali Linux' ]; then
+    apt install nmap -y
+  fi
+  if [ "$name" == '' ]; then
+    echo "Não foi possível identificar o sistema operacional. Por favor, instale o nmap manualmente."
     exit 1
+  fi
 fi
-
-# Solicita a faixa de IPs
-read -p "Digite a faixa de IP (ex: 192.168.1.0/24): " REDE
-
 
 # Exibe cabeçalho
 echo ""
